@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Box Gallery Admin' %}{% endblock %}
+
+{% block extrastyle %}
+<style>
+#header {background: #000;}
+#branding h1 {color: #fff;}
+.module h2, .module caption, .inline-group h2 { background:#ccc url({% load adminmedia %}{% admin_media_prefix %}img/admin/nav-bg.gif) bottom left repeat-x; color: #333940; }
+a.section:link, a.section:visited { color: #666666; }
+
+/* hide a few unneccessary things */
+#recent-actions-module, div.width, div.height {display:none;}
+
+</style>
+{% endblock %}
+
+{% block branding %}
+<a href="/"><img src="{{ MEDIA_URL }}/images/box_logo.gif" width="160px" height="160px" /></a>
+<!--<h2>Temporary Announcments</h2>
+<pre style="color:#fff;">- For artists, use the Resume field for all entries. The Solo
+and Group fields are gone.
+- If the Statement &amp; Resume fields are left blank, they will not be displayed.
+</pre>
+-->
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

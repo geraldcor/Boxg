@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load thumbnails %}
+{% block title %}<title>Box Gallery: Upcoming/Past Exhibitions</title>{% endblock %}
+{% block extrajs %}
+<script src="{{ MEDIA_URL }}js/libs/jquery.cycle.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#slideshow").cycle({
+	    speed:  500,
+	    before: onBefore 
+	});
+	$(".clickable").click(function(){
+		$(this).parent().children().children().toggle();
+	});
+});
+function onBefore(){
+	$('#slideshow_title').html(this.alt);
+	
+	//$('#slideshow_title').fadeOut(500).text(name).fadeIn(500);
+	//get the height of the current picture
+	var $ht = $(this).height();
+	//set the container's height to that of the current slide
+	$(this).parent().css("height", $ht);
+}
+</script>
+<style type="text/css">
+	#slideshow img { display:none; width:360px;}
+	#slideshow img.first { display: block; }
+	ul#drilldown {padding:0;}
+	ul#drilldown ul {padding-left:5px;}
+	ul#drilldown li { list-style-type:none; }
+	ul#drilldown ul li { display:none; }
+	.clickable { cursor:pointer;color:#4F97C1; }
+	div#slideshow_title { font-size: 10px; margin-top: .7em; text-transform: lowercase;}
+</style>
+{% endblock %}
+{% block content %}
+	<div class="exhibitions prepend-1 span-12">
+		<h1>upcoming / past exhibitions:</h1>
+
+		<div class="drilldown span-2">
+			{{ archives|get_drilldown }}
+		</div>
+		
+		<div class="past_exhibitions span-9">
+			{% for e in exhibit %}
+			<div id="slideshow">
+				{% for image in e.artists.artistimages_set.all %}
+				<img src="{{ image.image.url }}" alt="{{ image.caption }}" {{ image|htmlsize:"360w"}}{% if forloop.counter == 1 %} class="first"{% endif %}>
+				{% endfor %}
+			</div>
+			
+			<div id="slideshow_title"></div>
+		</div>
+	</div>
+		<div class="sidebar span-6 last">
+			<h2>{{ e.artists }}</h2>
+			<h3>{{ e.name }}</h3>
+			
+			<h4>{{ e.dates_info|linebreaksbr|safe }}</h4>
+			{% if e.artists.statement %}<p>{{ e.artists.statement|linebreaks }}</p>{% endif %}
+		</div>
+			{% endfor %}
+{% endblock %}

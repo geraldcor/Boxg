@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}<title>Box Gallery: About</title>{% endblock %}
+{% block content %}
+<div class="about prepend-1 span-12 last">
+	{% autoescape off %}
+	{{ myflatpage.title|linebreaks }}
+	{{ myflatpage.content|linebreaks }}
+	{% if myflatpage.image1 %}
+	<div class="image_caption_container span-12 last">
+		<div class="imagecontainer span-5">
+			<img src="{{ myflatpage.image1.url }}" />
+		</div>
+		<div class="caption span-6 last">
+		{{ myflatpage.image1_caption|linebreaks }}
+		</div>
+	</div>
+	{% endif %}
+	{% if myflatpage.image2 %}
+	<div class="image_caption_container span-12 prepend-top last">
+		<div class="imagecontainer span-5">
+			<img src="{{ myflatpage.image2.url }}" />
+		</div>
+		<div class="caption span-6 last">
+		{{ myflatpage.image2_caption|linebreaks }}
+		</div>
+	</div>
+	{% endif %}
+	{% endautoescape %}
+</div>
+{% endblock %}

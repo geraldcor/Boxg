@@ -1,0 +1,24 @@
+1. followed instructions at websaucesoftware
+2. downloaded jpeg library from linked site
+3. $ ./configure --enable-shared --enable-static
+4. $ make
+5. $ sudo make install
+6. appeared to compile without errors and install in /usr/local/lib
+7. back to PIL website. This time downloaded 1.1.6 rather than 1.1.7
+8. sudo python setup.py install (partial output below)
+
+PIL 1.1.6 BUILD SUMMARY
+--------------------------------------------------------------------
+version       1.1.6
+platform      darwin 2.6.1 (r261:67515, Jun 24 2010, 21:47:49)
+              [GCC 4.2.1 (Apple Inc. build 5646)]
+--------------------------------------------------------------------
+--- TKINTER support ok
+--- JPEG support ok
+--- ZLIB (PNG/ZIP) support ok
+*** FREETYPE2 support not available
+--------------------------------------------------------------------
+
+9. python selftest.py
+  01:Imaging-1.1.6 taylor$ python selftest.py 
+57 tests passed.

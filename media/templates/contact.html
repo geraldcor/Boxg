@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}<title>Box Gallery: Contact</title>{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#contactform").submit(function(event){
+		event.preventDefault();
+		if($("#id_name").val()=="" || $("#id_subject").val()=="" || $("#id_message").val()==""){
+			$("#errors").html("All Fields Are Required. Please Fix This Below and Resubmit");
+		}
+		else{
+			$.post('/contact/', $("#contactform").serialize(), function(data){
+				if(data=="success"){
+					$("#errors").html("");
+					$("#success").html("Thank you for contacting Box Gallery.");
+					$("#contactform input, #contactform textarea").each(function(){
+						$(this).val("");
+					});
+				}
+				else {
+					$("#errors").html("Pleas Enter A Valid Email Address");
+				}
+			});
+		}
+	});
+});
+</script>
+{% endblock %}
+{% block content %}
+<div class="contact">
+<div class="span-8 prepend-1">
+	<h1>contact:</h1>
+	<h2>enquiries. purchases. commissions:</h2>
+
+	<p>Box Gallery<br />
+		<a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=1611+Paseo+de+Peralta+Santa+Fe,+NM+87501&aq=&sll=35.681716,-105.948761&sspn=0.001194,0.002513&gl=us&ie=UTF8&hq=&hnear=1611+Paseo+De+Peralta,+Santa+Fe,+New+Mexico+87501&ll=35.682085,-105.948694&spn=0.009482,0.020106&z=16">1611-A Paseo de Peralta Santa Fe, NM 87501</a><br />
+		(across from SITE Santa Fe)<br />
+		505.989.4897<br />
+		<a href="mailto:info@boxgallerysf.com">info@boxgallerysf.com</a></p>
+	
+	<h2>hours:</h2>
+	<p>{{ hours }}</p>
+
+	<h2>Follow us:</h2>
+	<p>
+
+		<a href="http://www.facebook.com/pages/Box-Gallery/116080958472934"><img src="{{ MEDIA_URL }}images/facebook.png" /></a>
+		<a href="http://twitter.com/BOXgallery"><img src="{{ MEDIA_URL }}images/twitter.png" /></a>
+		<a href="http://boxgallery.blogspot.com"><img src="{{ MEDIA_URL }}images/blogger.png" /></a>
+		<img src="{{ MEDIA_URL }}images/linkedin.png" />
+</p>
+			
+	<p>Submission guidelines: <a href="{{ submission.pdf_file.url }}">Download PDF</a></p>
+</div>
+<div class="span-9 last">
+	<img src="{{ MEDIA_URL }}images/contact_map.gif" />
+</div>
+
+<div class="contact_form span-11 prepend-1 last">
+
+<h2>You can leave a message using the contact form below.</h2>
+<div id="errors">{{ form.errors }}</div>
+
+<form action="" method="post" id="contactform" name="contactform">{% csrf_token %}
+		
+		{% csrf_token %}
+<table>
+{% for f in form %}
+<tr>
+	<td>{{ f.label_tag }}: *{{ f}} {{ f.errors }}</td>
+</tr>
+{% endfor %}
+<tr>
+	<td><button type="submit" id="submitform" name="submitform">Submit</button></td>
+</tr>
+<tr>
+	<td id="success">&nbsp;</td>
+</tr>
+</table>
+</form>
+</div>
+
+{% endblock %}

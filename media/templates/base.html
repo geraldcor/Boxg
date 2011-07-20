@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	{% block title %}<title>Box Gallery</title>{% endblock %}
+	{% block metadescription %}<meta name="description" content="">{% endblock %}
+	{% block metakeywords %}<meta name="keywords" content="box,boxgallery,gallery,santa fe,santa,fe,art,artwork,artworks,contemporary" />{% endblock %}
+	<script src="{{ MEDIA_URL }}js/libs/jquery.min.js"></script>
+	<script src="{{ MEDIA_URL }}js/libs/modernizr-1.7.min.js"></script>
+	
+	<!-- Blueprint files -->
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css" type="text/css" media="print" />
+	<!--[if lt IE 8]>
+	  <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css" type="text/css" media="screen, projection">
+	<![endif]-->
+	<!-- /end blueprint files -->
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/s.css" type="text/css" media="screen, projection" />
+	
+	{% block extrajs %}{% endblock %}
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-133679-15']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+</head>
+<body>
+	<div class="container">
+		{% block header %}<header class="header span-4 last">
+			<div class="logo span-4 last">
+				<a href="/"><img src="{{ MEDIA_URL }}images/box_logo.gif" alt="Box Gallery Logo" /></a>
+			</div>
+			<nav class="nav span-4 last">
+				<ul class="prepend-top">
+					<li><a href="/">current exhibition</a></li>
+					<li><a href="/past/">upcoming/past exhibitions</a></li>
+					<li><a href="/artists/">artists</a></li>
+					<li><a href="/about/">about</a></li>
+					<li><a href="/contact/">contact</a></li>
+				</ul>
+			</nav>
+		</header>{% endblock %}
+	<div class="body span-19 last">
+	{% block content %}{% endblock %}
+	</div>
+	{% block footer %}
+	<footer class="footer"><div class="fader"></div><div class="whiteblock"><p>&copy; box gallery 2011 &nbsp;|&nbsp; 505. 989. 4897. &nbsp;|&nbsp; <a href="mailto:info@boxgallerysf.com">info@boxgallerysf.com</a> &nbsp;|&nbsp; <a href="/contact">submissions</a> &nbsp;|&nbsp; <a href="/terms">terms and conditions</a></p></div>
+	</footer>
+	{% endblock %}
+	</div>
+</body>
+</html>

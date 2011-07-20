@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load thumbnails %}
+{% block extrajs %}
+	<script src="{{ MEDIA_URL }}js/libs/jquery.cycle.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#slideshow").cycle({
+		    speed:  400,
+		    before: onBefore 
+		});
+	});
+	function onBefore(){
+		$('#slideshow_title').html(this.alt);
+	
+		//$('#slideshow_title').fadeOut(500).text(name).fadeIn(500);
+		//get the height of the current picture
+		var $ht = $(this).height();
+		//set the container's height to that of the current slide
+		$(this).parent().css("height", $ht);
+	}
+	</script>
+
+{% endblock %}
+{% block content %}
+		<div class="current_exhibitions span-10 prepend-1 append-1">
+			<h1>current exhibition:</h1>
+			{% for e in exhibit %}
+			<div id="slideshow">&nbsp;{% for image in e.artists.artistimages_set.all %}
+				<img src="{{ image.image.url }}" alt="{{ image.caption }}" {{ image|htmlsize:"400w"}}{% if forloop.counter == 1 %} class="first"{% endif %}>{% endfor %}
+			</div>
+			<div id="slideshow_title"></div>
+		</div>
+		{% for image in e.artists.artistimages_set.all %}{% endfor %}
+		<div class="sidebar span-7 last">
+			<h2>{{ e.artists }}</h2>
+			{% if e.name %}<h3>{{ e.name }}</h3>{% endif %}
+			<h4>{{ e.dates_info|linebreaksbr|safe }}</h4>
+			{% for e in exhibit %}
+			{% if e.video_link %}<!--<div class="video">
+				<a href=""><img src="{{ MEDIA_URL }}/images/fake video.png" /></a>
+				{{ e.video_link|safe }}
+			</div>-->{% endif %}
+			{% endfor %}
+			{% if e.artists.statement %}{{ e.artists.statement|linebreaks }}{% endif %}
+		</div>
+		{% endfor %}
+{% endblock %}

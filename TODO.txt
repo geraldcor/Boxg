@@ -1,0 +1,18 @@
+# To do: (updated 5/30/11)
+
+- All pages
+	- meta keywords,descriptions (taylor waiting on Tanmaya)
+- contact
+	- settings.py and views.py need some custom settings to finalize email sending. (greg)
+- VERY EASY. PERMISSIONS RELATED SEE GC admin
+	- remove/hide: "sites", "groups", "auth", "users"
+	- maybe hide history... might be too confusing for *ahem* users.
+- final pre-launch cleanup
+	- move all css into one file (taylor)
+		- it is mostly in the base.html
+- launch
+	- upload
+	- setup database
+	- test
+- train
+- get paid

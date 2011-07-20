@@ -1,0 +1,59 @@
+/* headers, site-wide items */
+.container {margin:0;} /* left-align the whole site */
+h1,h3 {text-transform: lowercase;}
+h1 {font-size:13px;}
+h2 {text-transform: uppercase;}
+.header {background:url(/media/images/nav_bg.gif); width: 160px; height: 745px;}
+.nav {background: #FFF; height: 580px; width: 152px; margin-left:4px; display: block;}
+.nav ul {list-style-type: none;}
+.nav ul li {font-size:7pt; line-height: 2.5em;}
+.nav a, .nav a:visited {color:#000; text-decoration: none;}
+a:hover, .nav a:hover, div.artists ul a:hover {color:#999;}
+div.body {margin-top: 98px;} /* lines up image top with 2nd word in the logo */
+div.sidebar {margin-top:15px;} /* lines up artist name in sidevar with image top */
+div.sidebar h2 {margin:0; padding:0; line-height:1em;}
+div.sidebar h4 {margin:30px 0 0 0;}
+div.sidebar h4+h4 {margin:0 0 30px 0;}
+div.sidebar p {margin-top:1em;}
+div.sidebar .video iframe{width:140px;height:100px;}
+
+/* index > slideshow */
+div#slideshow img { display:none; width:400px;}
+div#slideshow img.first { display: block;}
+div#slideshow_title { font-size: 10px; margin-top: 1em; text-transform: lowercase;}
+
+/* footer styling */
+div.body {margin-bottom:50px;}
+.footer {position:fixed; bottom:0; width:800px; margin-left:160px; z-index:2; color:#888; font-size:.8em;}
+.footer .fader {height: 15px; background:url(/media/images/footer_fade.png);}
+.footer div.whiteblock {height: 20px; background:#fff;}
+.footer p {float: right; height:20px; margin:0;}
+.footer a, .footer a:visited {color:#888; text-decoration: none;}
+
+/* artistS page */
+div.artists ul {list-style-type: none;}
+div.artists ul a {text-decoration: none; color:#000;}
+div.artists li {width: 140px; height:60px; float:left; margin-left: 20px; margin-bottom:30px;}
+div.artists li p {float: left; width: 70px; text-align: right;}
+div.artists li img {float:right; margin-left: 8px; width: 60px; height:60px;}
+
+/* artist page */
+div.artist .artist_images .imgwrap {margin:0px 25px 23px 0px; float: left; width:90px; }
+div.artist .fourth {clear:both;}
+div.artist .bio p {font-size:.8em;}
+div.artist h2 {font-size: 1.5em;}
+div.artist h3 {font-size:1em; margin-bottom:0;}
+
+/* contact page */
+div.contact h2 {font-size:1em; text-transform:lowercase;}
+div.contact div#errors {color: red;}
+div.contact a {color:#000; text-decoration: none;}
+div.contact a:hover {color:#999;}
+div.contact form label {font-weight:normal;}
+div.contact form td {text-align: left; background:#fff;}
+div.contact form input {width:300px; float:right;}
+div.contact form textarea {width:292px; float:right; height:7em;}
+
+/* about */
+div.about img {width:185px;}
+div.about .image_caption_container {margin-top:30px;}

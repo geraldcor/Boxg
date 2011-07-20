@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}<title>Box Gallery: Artists</title>{% endblock %}
+{% block content %}
+<div class="artists span-19 prepend-1 last">
+
+<h1>artists:</h1>
+<ul>
+{% for a in artists%}
+	<li><p><a href="/artist/{{ a.id }}/">{{ a.name|lower }}:</a></p><a href="/artist/{{ a.id }}/"><img src="{{ a.avatar.url }}" /></a></li>
+{% endfor %}
+</ul>
+
+</div>
+{% endblock %}

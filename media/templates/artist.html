@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load thumbnails %}
+{% block title %}<title>Box Gallery: {{ artist.name }}</title>{% endblock %}
+{% block extrajs %}
+<script type="text/javascript" src="{{ MEDIA_URL }}/js/libs/jquery.lightbox-0.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/jquery.lightbox-0.5.css" media="screen" />
+
+<script type="text/javascript">
+$(function() {
+	//$('a.lightbox').lightBox(); // Select all links with lightbox class
+	$('.artist_images a').lightBox({
+		overlayBgColor: '#000',
+		overlayOpacity: 0.6,
+		imageBtnClose: '{{ MEDIA_URL }}/images/lightbox/lightbox-btn-close.gif',
+		imageBtnPrev: '{{ MEDIA_URL }}/images/lightbox/lightbox-btn-prev.gif',
+		imageBtnNext: '{{ MEDIA_URL }}/images/lightbox/lightbox-btn-next.gif',
+		containerResizeSpeed: 350,
+		txtImage: 'image',
+		txtOf: 'of'
+	   });
+});
+</script>
+{% endblock %}
+{% block content %}
+<div class="artist">
+	<div class="artist_images span-12 prepend-1">
+		<h1>artist:</h1>
+		{% for a in artist.artistimages_set.all %}
+		<div class="imgwrap{% if forloop.counter0|divisibleby:'4' %} fourth{% endif %}">
+			<a href="{{ a.image.url }}" title="{{ a.caption }}"><img src="{{ a.image.url }}" class="artistThumbnail" {{ a.image|htmlsize:"90w" }} id="{{ a.image }}|{{ a.image.width }}|{{ a.image.height }}" title="{{ a.caption }}" /></a>
+		</div>
+			{% endfor %}
+	</div>
+	<div class="bio span-5 last">
+		<h2>{{ artist.name|upper }}</h2>
+
+		{% if artist.statement %}<h3>statement:</h3>
+		{{ artist.statement|linebreaks }}
+		{% endif %}
+
+		{% if artist.resume %}<h3>resume:</h3>
+		{{ artist.resume|linebreaks }}
+		{% endif %}
+
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}<title>Box Gallery: Terms &amp; Conditions</title>{% endblock %}
+{% block content %}
+<div class="terms prepend-1 span-12 last">
+	{% autoescape off %}
+	<h1>{{ myflatpage.title|linebreaks }}</h1>
+	{{ myflatpage.content|linebreaks }}
+	{% endautoescape %}
+</div>
+{% endblock %}
